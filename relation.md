@@ -14,16 +14,7 @@ Plonkish arithmetisation depends on a scalar field over a prime modulus $p$. We 
 The relation $\mathcal{R}_{\mathsf{plonkish}}$ contains pairs of public instances $\mathsf{instance}$ and private advice $w$.  We say that $\mathsf{instance}$ is a valid instance whenever their exists some advice $w$ such that $(\mathsf{instance}, w) \in \mathcal{R}_{\mathsf{plonkish}}$.  The Plonkish language $\mathcal{L}_{\mathsf{plonkish}}$ contains all valid instances.
 
 $$
-\mathcal{R}_ {\mathsf{plonkish}} =
-\left\{ \begin{array}{cc | c}
-    (\mathbb{F}, (f, \phi), \equiv_ A, S_I, \{\mathsf{CUS}_ {u}, p_u\}_ u, \{ \mathsf{LOOK}_ v, \mathsf{TAB}_ v, q_ v \}), & &  \\
-   w \in \mathbb{F}^{m_ A \times n}, f \in \mathbb{F}^{m_ F \times n}, \phi \in \mathbb{F}^{m_ I \times n} & & \\
-   \equiv_ A \subset ([0,m_ A) \times [0,n)) \times ([0,m_ A) \times [0,n)) & & (i,j) \equiv_ A (k,\ell) \Rightarrow w[i, j] = w[k, \ell] \\
-   S_ I \subset [0,m_ A) \times [0,n) \times [0,m_ I) \times [0,n) & & (i,j,k,\ell) \in S_ I \Rightarrow w[i, j] = \phi[k, \ell] \\
-   S_ F \subset [0,m_ A) \times [0,n) \times [0,m_ F) \times [0,n) & & (i,j,k,\ell) \in S_ F \Rightarrow w[i, j] = f[k, \ell] \\
-   \forall u, \ \mathsf{CUS}_ u \subset [0,n), \ p_ u: \mathbb{F}^{m_ F + m_ A} \mapsto \mathbb{F} & & j \in \mathsf{CUS}_ u \Rightarrow p_ u( f[0, j], \ldots, f[m_ F - 1, j], w[0, j], \ldots, w[m_ A - 1,j] ) = 0 \\
-   \mathsf{LOOK}_ v \subset  [0,n),  \mathsf{TAB}_ v \subset \mathbb{F}^{m_ F}  & & j \in \mathsf{LOOK}_ v \Rightarrow q_v(w[0, j], \ldots, w[m-1, j] ) \in \mathsf{TAB}_ k \\ 
-\end{array} \right\}
+\mathcal{R}_ {\mathsf{plonkish}} = \left\{ \begin{array}{cc | c}    (\mathbb{F}, (f, \phi), \equiv_ A, S_ I, \{\mathsf{CUS}_ {u}, p_u\}_ u, \{ \mathsf{LOOK}_ v, \mathsf{TAB}_ v, q_ v \}), & & \\   w \in \mathbb{F}^{m_ A \times n}, f \in \mathbb{F}^{m_ F \times n}, \phi \in \mathbb{F}^{m_ I \times n} & & \\   \equiv_ A \subset ([0,m_ A) \times [0,n)) \times ([0,m_ A) \times [0,n)) & & (i,j) \equiv_ A (k,\ell) \Rightarrow w[i, j] = w[k, \ell] \\   S_ I \subset [0,m_ A) \times [0,n) \times [0,m_ I) \times [0,n) & & (i,j,k,\ell) \in S_ I \Rightarrow w[i, j] = \phi[k, \ell] \\   S_ F \subset [0,m_ A) \times [0,n) \times [0,m_ F) \times [0,n) & & (i,j,k,\ell) \in S_ F \Rightarrow w[i, j] = f[k, \ell] \\   \forall u, \ \mathsf{CUS}_ u \subset [0,n), \ p_ u: \mathbb{F}^{m_ F + m_ A} \mapsto \mathbb{F} & & j \in \mathsf{CUS}_ u \Rightarrow p_ u( f[0, j], \ldots, f[m_ F - 1, j], w[0, j], \ldots, w[m_ A - 1,j] ) = 0 \\   \mathsf{LOOK}_ v \subset  [0,n),  \mathsf{TAB}_ v \subset \mathbb{F}^{m_ F}  & & j \in \mathsf{LOOK}_ v \Rightarrow q_v(w[0, j], \ldots, w[m-1, j] ) \in \mathsf{TAB}_ k \\ \end{array} \right\}
 $$
 
 The relation $\mathcal{R}_ {\mathsf{plonkish}}$ takes as public inputs the instances 
