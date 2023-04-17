@@ -14,50 +14,50 @@ Plonkish arithmetisation depends on a scalar field over a prime modulus $p$. We 
 The relation $\mathcal{R}_{\mathsf{plonkish}}$ contains pairs of public instances $\mathsf{instance}$ and private advice $w$.  We say that $\mathsf{instance}$ is a valid instance whenever their exists some advice $w$ such that $(\mathsf{instance}, w) \in \mathcal{R}_{\mathsf{plonkish}}$.  The Plonkish language $\mathcal{L}_{\mathsf{plonkish}}$ contains all valid instances.
 
 $$
-\mathcal{R}_{\mathsf{plonkish}} =
+\mathcal{R}_ {\mathsf{plonkish}} =
 \left\{ \begin{array}{cc | c}
-    (\mathbb{F}, (f,  \phi), \equiv_A, S_I, \{\mathsf{CUS}_{u}, p_u\}_u, \{ \mathsf{LOOK}_v, \mathsf{TAB}_v, q_v \}), & &  \\
-   w \in \mathbb{F}^{m_A \times n}, f \in \mathbb{F}^{m_F \times n}, \phi \in \mathbb{F}^{m_I \times n} & & \\
-   \equiv_A \subset ([0,m_A) \times [0,n)) \times ([0,m_A) \times [0,n)) & & (i,j) \equiv_A (k,\ell) \Rightarrow w[i, j] = w[k, \ell] \\
-   S_I \subset [0,m_A) \times [0,n) \times [0,m_I) \times [0,n) & & (i,j,k,\ell) \in S_I \Rightarrow w[i, j] = \phi[k, \ell] \\
-   S_F \subset [0,m_A) \times [0,n) \times [0,m_F) \times [0,n) & & (i,j,k,\ell) \in S_F \Rightarrow w[i, j] = f[k, \ell] \\
-   \forall u, \ \mathsf{CUS}_u \subset [0,n), \ p_u: \mathbb{F}^{m_F + m_A} \mapsto \mathbb{F} & &  j \in \mathsf{CUS}_u \Rightarrow p_u( f[0, j], \ldots ,  f[m_F-1, j], w[0, j], \ldots, w[m_A-1,j] ) = 0 \\
-   \mathsf{LOOK}_v \subset  [0,n),  \mathsf{TAB}_v \subset \mathbb{F}^{m_F}  & & j \in \mathsf{LOOK}_v \Rightarrow q_v(w[0, j], \ldots, w[m-1, j] ) \in \mathsf{TAB}_k \\ 
+    (\mathbb{F}, (f, \phi), \equiv_ A, S_I, \{\mathsf{CUS}_ {u}, p_u\}_ u, \{ \mathsf{LOOK}_ v, \mathsf{TAB}_ v, q_ v \}), & &  \\
+   w \in \mathbb{F}^{m_ A \times n}, f \in \mathbb{F}^{m_ F \times n}, \phi \in \mathbb{F}^{m_ I \times n} & & \\
+   \equiv_ A \subset ([0,m_ A) \times [0,n)) \times ([0,m_ A) \times [0,n)) & & (i,j) \equiv_ A (k,\ell) \Rightarrow w[i, j] = w[k, \ell] \\
+   S_ I \subset [0,m_ A) \times [0,n) \times [0,m_ I) \times [0,n) & & (i,j,k,\ell) \in S_ I \Rightarrow w[i, j] = \phi[k, \ell] \\
+   S_ F \subset [0,m_ A) \times [0,n) \times [0,m_ F) \times [0,n) & & (i,j,k,\ell) \in S_ F \Rightarrow w[i, j] = f[k, \ell] \\
+   \forall u, \ \mathsf{CUS}_ u \subset [0,n), \ p_ u: \mathbb{F}^{m_ F + m_ A} \mapsto \mathbb{F} & & j \in \mathsf{CUS}_ u \Rightarrow p_ u( f[0, j], \ldots, f[m_ F - 1, j], w[0, j], \ldots, w[m_ A - 1,j] ) = 0 \\
+   \mathsf{LOOK}_ v \subset  [0,n),  \mathsf{TAB}_ v \subset \mathbb{F}^{m_ F}  & & j \in \mathsf{LOOK}_ v \Rightarrow q_v(w[0, j], \ldots, w[m-1, j] ) \in \mathsf{TAB}_ k \\ 
 \end{array} \right\}
 $$
 
-The relation $\mathcal{R}_{\mathsf{plonkish}}$ takes as public inputs the instances 
-$$ \mathsf{instance} = (\mathbb{F}, (f,  \phi), S_A, S_I, \{\mathsf{CUS}_{k}, p_k\}_k, \{ \mathsf{LOOK}_k, \mathsf{TAB}_k \})$$  of the following form.
+The relation $\mathcal{R}_ {\mathsf{plonkish}}$ takes as public inputs the instances 
+$$ \mathsf{instance} = (\mathbb{F}, (f, \phi), S_ A, S_ I, \{\mathsf{CUS}_ {k}, p_ k\}_k, \{ \mathsf{LOOK}_ k, \mathsf{TAB}_ k \})$$  of the following form.
 
-### Inputs into $\mathcal{R}_{\mathsf{plonkish}}$ 
+### Inputs into $\mathcal{R}_ {\mathsf{plonkish}}$ 
 
 | Public Inputs | Description | 
 | -------- | -------- | 
 | $\mathbb{F}$ | A prime field. |
 | $m_A > 0$ | Number of advice columns. |
-| $m_I$ | Number of instance columns. |
-| $m_F$ | Number of fixed columns. |
+| $m_ I$ | Number of instance columns. |
+| $m_ F$ | Number of fixed columns. |
 | $n > 0$ | Number of rows. |
-| $f$ | Fixed columns $f : \mathbb{F}^{m_F \times n}$. |
+| $f$ | Fixed columns $f : \mathbb{F}^{m_ F \times n}$. |
 | $\phi$ | Instance columns $\phi :  \mathbb{F}^{m_I \times n}$. |
-| $\equiv_A$ | An equivalence relation on $[0,m_A) \times [0,n)$ indicating which advice entries are equal. | 
-| $S_I$ | A set $S_I \subseteq [0,m_A) \times [0,n) \times [0,m_I) \times [0,n)$ indicating which instance entries must be used in the advice. | 
-| $S_F$ | A set $S_F \subseteq [0,m_A) \times [0,n) \times [0,m_F) \times [0,n)$ indicating which fixed entries must be used in the advice. |
-| $\mathsf{CUS}_u$ | Sets $\mathsf{CUS}_u \subseteq [0,n)$ indicating which rows the custom functions $p_u: \mathbb{F}^{m_F + m_A} \mapsto \mathbb{F}$ are applied to.     |
-| $p_u$ | Custom multivariate polynomials $p_u: \mathbb{F}^{m_F + m_A}  \mapsto \mathbb{F}$ | 
-| $\mathsf{LOOK}_v$ | Sets $\mathsf{LOOK}_v \subseteq [0,n)$ indicating which advice rows are contained in the lookup tables $\mathsf{TAB}_v$. | 
-| $\mathsf{TAB}_v$ | Lookup tables $\mathsf{TAB}_v\subseteq \mathbb{F}^{m_F}$ with an unbounded number of entries in the field $\mathbb{F}^m$ |
-| $q_v$ | Custom scaling functions $q_u: \mathbb{F}^{m_A}  \mapsto \mathbb{F}^{m_{q_u}}$ where $q_u \leq m_A$ | 
+| $\equiv_ A$ | An equivalence relation on $[0,m_ A) \times [0,n)$ indicating which advice entries are equal. | 
+| $S_ I$ | A set $S_ I \subseteq [0,m_ A) \times [0,n) \times [0,m_ I) \times [0,n)$ indicating which instance entries must be used in the advice. | 
+| $S_ F$ | A set $S_ F \subseteq [0,m_ A) \times [0,n) \times [0,m_ F) \times [0,n)$ indicating which fixed entries must be used in the advice. |
+| $\mathsf{CUS}_ u$ | Sets $\mathsf{CUS}_ u \subseteq [0,n)$ indicating which rows the custom functions $p_ u: \mathbb{F}^{m_ F + m_ A} \mapsto \mathbb{F}$ are applied to.     |
+| $p_ u$ | Custom multivariate polynomials $p_ u: \mathbb{F}^{m_ F + m_ A}  \mapsto \mathbb{F}$ | 
+| $\mathsf{LOOK}_ v$ | Sets $\mathsf{LOOK}_ v \subseteq [0,n)$ indicating which advice rows are contained in the lookup tables $\mathsf{TAB}_ v$. | 
+| $\mathsf{TAB}_ v$ | Lookup tables $\mathsf{TAB}_ v\subseteq \mathbb{F}^{m_ F}$ with an unbounded number of entries in the field $\mathbb{F}^m$ |
+| $q_ v$ | Custom scaling functions $q_ v: \mathbb{F}^{m_ A}  \mapsto \mathbb{F}^{m_ {q_ v}}$ where $q_ v \leq m_ A$ | 
 
 > TODO: do we need to generalise lookup tables to support dynamic tables (in advice columns)? Probably too early, but we could think about it.
 
 | Private Inputs | Description | 
 | -------- | -------- | 
-| $w$ | Advice columns $w : \mathbb{F}^{m_A \times n}$.    | 
+| $w$ | Advice columns $w : \mathbb{F}^{m_ A \times n}$.    | 
 
-### Conditions satisfied by statements in $\mathcal{R}_{\mathsf{plonkish}}$
+### Conditions satisfied by statements in $\mathcal{R}_ {\mathsf{plonkish}}$
 
-There are three types of constraints that a Plonkish statement $(\mathsf{instance}, w) \in \mathcal{R}_{\mathsf{Plonkish}}$ must satisfy:
+There are three types of constraints that a Plonkish statement $(\mathsf{instance}, w) \in \mathcal{R}_ {\mathsf{Plonkish}}$ must satisfy:
 
 * Copy constraints
 * Custom constraints
@@ -69,9 +69,9 @@ Copy constraints that enforce that advice entries must be equal to other inputs.
 
 | Copy Constraints | Description | 
 | -------- | -------- | 
-| $(i,j) \equiv_A (k,\ell) \Rightarrow w[i, j] = w[k, \ell]$ | $\equiv_A$ is an equivalence relation indicating which advice entries are constrained to be equal. |
-| $(i,j,k,\ell) \in S_I \Rightarrow w[i, j] = \phi[k, \ell]$ | The $(k, \ell)$th instance entry is equal to the $(i,j)$th advice entry for all $(i,j,k,\ell) \in S_I$.    |
-| $(i,j,k,\ell) \in S_F \Rightarrow w[i, j] = f[k, \ell]$ | The $(k, \ell)$th fixed entry is equal to the $(i,j)$th advice entry for all $(i,j,k,\ell) \in S_F$.    |
+| $(i,j) \equiv_ A (k,\ell) \Rightarrow w[i, j] = w[k, \ell]$ | $\equiv_ A$ is an equivalence relation indicating which advice entries are constrained to be equal. |
+| $(i,j,k,\ell) \in S_ I \Rightarrow w[i, j] = \phi[k, \ell]$ | The $(k, \ell)$th instance entry is equal to the $(i,j)$th advice entry for all $(i,j,k,\ell) \in S_ I$.    |
+| $(i,j,k,\ell) \in S_ F \Rightarrow w[i, j] = f[k, \ell]$ | The $(k, \ell)$th fixed entry is equal to the $(i,j)$th advice entry for all $(i,j,k,\ell) \in S_ F$.    |
 
 #### Custom constraints
 
@@ -79,9 +79,9 @@ Custom constraints that enforce that fixed entries and advice entries satisfy so
 
 | Custom Constraints | Description |
 | -------- | -------- | 
-| $j \in \mathsf{CUS}_u \Rightarrow p_u( f[0, j], \ldots ,  f[m_F-1, j], w[0, j], \ldots, w[m_A-1, j] ) = 0$ | $u$ is the index of a custom constraint. $j$ ranges over the set of rows $\mathsf{CUS}_u$ for which the custom constraint is switched on. |
+| $j \in \mathsf{CUS}_ u \Rightarrow p_ u( f[0, j], \ldots ,  f[m_ F-1, j], w[0, j], \ldots, w[m_ A - 1, j] ) = 0$ | $u$ is the index of a custom constraint. $j$ ranges over the set of rows $\mathsf{CUS}_ u$ for which the custom constraint is switched on. |
 
-Here $p_u: \mathbb{F}^{m_F + m_A} \mapsto \mathbb{F}$ is a function such that $$ p_u( X_0, \ldots, X_{m_F + m_A - 1}) = p_{u,0} * X_0 \ \ * / + \ \ p_{u,1} * X_1 \ \ * / + \ \ \cdots \ \ * / + \ \ p_{u,m_F + m_A - 1} X_{m_F+m_A-1}$$ where $p_{u,i} \in \mathbb{F}$ are scalars and where $p_u$ determines whether to use the multiplication $*$ or addition $+$ operation at each step.
+Here $p_ u: \mathbb{F}^{m_ F + m_ A} \mapsto \mathbb{F}$ is a function such that $$ p_ u( X_ 0, \ldots, X_ {m_ F + m_ A - 1}) = p_ {u,0} * X_ 0 \ \ * / + \ \ p_ {u,1} * X_1 \ \ * / + \ \ \cdots \ \ * / + \ \ p_ {u,m_ F + m_ A - 1} X_{m_ F + m_ A - 1}$$ where $p_ {u,i} \in \mathbb{F}$ are scalars and where $p_ u$ determines whether to use the multiplication $*$ or addition $+$ operation at each step.
 
 #### Lookup constraints
 
@@ -91,27 +91,34 @@ Fixed lookup tables are determined in advance, whereas dynamic lookup tables are
 
 | Lookup Constraints | Description |
 | -------- | -------- | 
-| $j \in \mathsf{LOOK}_v \Rightarrow q_u( w[0, j], \ldots, w[m_A-1, j] ) \in \mathsf{TAB}_v$ | $v$ is the index of a lookup table. $j$ ranges over the set of rows $\mathsf{LOOK}_v$ for which the lookup constraint is switched on. |
+| $j \in \mathsf{LOOK}_ v \Rightarrow q_ v( w[0, j], \ldots, w[m_ A - 1, j] ) \in \mathsf{TAB}_ v$ | $v$ is the index of a lookup table. $j$ ranges over the set of rows $\mathsf{LOOK}_ v$ for which the lookup constraint is switched on. |
 
-Here $q_v: \mathbb{F}^{ m_A } \mapsto \mathbb{F}^{m_{q_u}}$ is a scaling function that behaves as follows.  Let $\vec{q}_v \in \mathbb{F}^{ m_A }$ be a vector of scalars.  Then 
-$$q_v( X_0, \ldots, X_{m_A - 1}) = (q_{i_0} X_{i_0}, \ldots, q_{i_{m_{q_v}}} X_{i_{m_{q_v}}})$$
-where $( i_0, \ldots, i_{m_{q_v}}) \subset (0, \ldots, m_A)$ are all the indices such that $q_{v, i_j} \neq 0$.
+Here $q_ v: \mathbb{F}^{ m_ A } \mapsto \mathbb{F}^{m_ {q_ v}}$ is a scaling function that behaves as follows.  Let $\vec{q}_ v \in \mathbb{F}^{ m_ A }$ be a vector of scalars.  Then 
+$$q_ v( X_ 0, \ldots, X_ {m_ A - 1}) = (q_ {i_ 0} X_ {i_ 0}, \ldots, q_ {i_ {m_ {q_ v}}} X_ {i_ {m_ {q_ v}}})$$
+where $( i_ 0, \ldots, i_ {m_ {q_ v}}) \subset (0, \ldots, m_ A)$ are all the indices such that $q_ {v, i_ j} \neq 0$.
 
+----
+Here $q_ v: \mathbb{F}^{ m_ A } \mapsto \mathbb{F}^{ m_ A }$ is a scaling function that behaves as follows.  Let $\vec{q}_ v \in \mathbb{F}^{ m_ A }$ be a vector of scalars.  Then 
+$$q_ v( X_ 0, \ldots, X_ {m_ A - 1}) = (q_ {v,0} X_ {i_ 0}, \ldots, q_ {v, m_ A -1} X_ {v, m_ A - 1})$$
+
+----
+Here $q_ {v,i}: \mathbb{F}^{m_ F + m_ A} \mapsto \mathbb{F}$ is an evaluation function that maps the fixed and advice cells on the lookup row to a tuple of field elements that must match a row of the table. Then 
+$$q_ {v,i}(X_ 0, \ldots, X_ {m_ F + m_ A - 1}) = \text{polynomial as for custom constraints}$$
 
 ----
 
-(This change log is for both this document and https://hackmd.io/6RHNkB6_TlaqHSDHfwGzuQ)
+(This change log is for both this document and https://github.com/daira/plonk-standard/blob/main/optimizations.md)
 
 #### Changes made by Daira since the 2023-03-03 meeting
 
-* Change $S_A$ to an equivalence relation
+* Change $S_ A$ to an equivalence relation
   * This removes unnecessary degrees of freedom in specifying copy constraints between advice cells, and makes it easier to define correctness of the abstract $\rightarrow$ concrete compilation.
 * Use $u$ instead of $k$ to index custom constraints, and $v$ instead of $k$ to index lookups.
   * This avoids overloading of $k$.
 * Define the $\triangledown$ operator for addition modulo $n$.
 * Define "used" cells.
 * For "With rotations (option A)", change $E_u$ to be a list of rotations.
-  * This avoids the need for $z_u$ as a separate variable.
+  * This avoids the need for $z_ u$ as a separate variable.
 * For "With rotations (option B)", give more detail and specify a correctness condition for compiling an abstract circuit to a concrete circuit using hints.
 
 
@@ -125,8 +132,8 @@ where $( i_0, \ldots, i_{m_{q_v}}) \subset (0, \ldots, m_A)$ are all the indices
     * Avoids having to define "used" cells and therefore simplifies.
     * We can use the (under construction) greedy algorithm anyway.
     
-* Tried to be more precise about what $p_u$ constraints are valid.  
-    * Before we just said $p_u$ is constructed using addition and multiplication gates which is potentially too vague.
+* Tried to be more precise about what $p_ u$ constraints are valid.  
+    * Before we just said $p_ u$ is constructed using addition and multiplication gates which is potentially too vague.
     * Current suggestion is a bit ugly and needs checking for correctness.
 
 
@@ -138,6 +145,10 @@ where $( i_0, \ldots, i_{m_{q_v}}) \subset (0, \ldots, m_A)$ are all the indices
 
 #### Changes made by Mary on 2023-28-03 
 
-* Added $q_v$ scaling functions to describe input to lookup tables.
+* Added $q_ v$ scaling functions to describe input to lookup tables.
 * Completed first attempt at describing lookup constraints
 * Have not yet tackled dynamic tables.
+
+#### Changes made by Daira on 2023-04-06
+
+* ...
